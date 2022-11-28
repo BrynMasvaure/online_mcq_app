@@ -1,0 +1,38 @@
+{% extends 'base.html' %} 
+
+
+    <h1>{% block title %} User Dashboard {% endblock %}</h1>
+    <h2>{% block pagetitle %} Quiz for: {{quest.subject}} {%endblock %}</h2>
+    {% block questList %}
+    <div class="question-area"> 
+        <B class="quest-area-heading"> Your Questions</B><br><br>
+        {% for q in questList %}
+        <a href="{{url_for('quizz_bp.showQuest',subject=q.subject,qid=q.qid)}}"><button
+             value={{q.qid}} {{q.status}} id={{q.qid}}>{{loop.index}}</button></a>
+             
+        {% endfor %}
+    </div>
+    <br><br><a href="{{url_for('quizz_bp.logout')}}" class="call_to-btn">
+        <button class="logout_button">Display Result</button></a>
+    {% endblock %}
+    
+    {% block content %} 
+    <form method="POST" action="{{url_for('quizz_bp.saveAns')}}">
+        <div class="question"><h5><input class="quest-number" type="text" name="qid" value={{quest.qid}}>   
+             <input class="sub-category" type="text" name="subject" value='{{quest.subject}}' style="border-style:none"> </h5>
+        </div>
+        <div class="qst">{{quest.question}}</div>
+        <div class="opt"><input type="radio" name="answer" value="1"> {{quest.option1}}</div>
+	    <div class="opt"><input type="radio" name="answer" value="2"> {{quest.option2}}</div>
+	    <div class="opt"><input type="radio" name="answer" value="3"> {{quest.option3}}</div>
+	    <div class="opt"><input type="radio" name="answer" value="4"> {{quest.option4}}</div>
+        <input type="submit" value="Save Answer" class="call_to-btn"/>
+    </form>
+    {% endblock %}
+    
+
+    <script>
+        function colorbtn(q_id){
+            document.getElementByid(q_id).background-color === "green";
+        }
+    </script>

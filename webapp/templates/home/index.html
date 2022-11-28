@@ -1,0 +1,21 @@
+{% extends "base_reg.html" %} 
+<h1>{% block title %}
+    Primary Level Quiz
+{% endblock %}</h1>
+
+<h4>{% block pagetitle %} 
+    Choose A Subject
+{% endblock %}</h4>
+
+{% block body %}
+    <div>
+        <form method="POST" action="{{url_for('quizz_bp.quizz')}}"> {#change this to quizz_bp.quizz#}
+            {% for sb in subList_science %}
+            <input type="submit" name="sub" value='{{sb.subject}}' class="call_to-btn btn_white-border">
+            {% endfor %}     
+            {% for sb in subList_maths %}
+            <input type="submit" name="sub" value='{{sb.subject}}' class="call_to-btn btn_white-border">
+            {% endfor %}     
+
+    </div>
+{% endblock %}

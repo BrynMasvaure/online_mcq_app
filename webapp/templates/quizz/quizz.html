@@ -1,0 +1,10 @@
+{#% extends 'base_reg.html' %#} 
+
+{% block content %} 
+    <h1>{% block title %} Static Files Example {% endblock %}</h1>
+    <div class="content">
+        {% for q in questList %}
+        <a href="{{url_for('quizz',sub=q.subject,qid=q.qid)}}"><button>{{q.qid}}</button></a>
+        {% endfor %}
+    </div>
+{% endblock %}

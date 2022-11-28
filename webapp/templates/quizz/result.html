@@ -1,0 +1,10 @@
+{% extends "base_reg.html" %} 
+
+    <h1>{% block title %} Success {% endblock %}</h1>
+
+    {% block body%} 
+    <h2>{{ txt }}!</h2>
+    <div>
+        <a href="{{url_for('home_bp.index')}}"><input type="button" value="Go to home page" class="call_to-btn btn_white-border"></a>
+    </div>
+    {% endblock %}
